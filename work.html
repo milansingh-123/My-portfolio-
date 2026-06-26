@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Work | Milan Singh UI/UX Designer Portfolio</title>
+    <!-- Bootstrap 5 + Icons + Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 20% 30%, #0a0a1a, #03010a);
+            color: #eef5ff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        /* custom cursor glow */
+        
+        .cursor-glow {
+            width: 30px;
+            height: 30px;
+            background: rgba(0, 255, 255, 0.3);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            filter: blur(8px);
+            transition: transform 0.1s;
+        }
+        /* Flying icons container */
+        
+        .floating-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .fly-icon {
+            position: absolute;
+            font-size: 1.8rem;
+            opacity: 0.4;
+            filter: drop-shadow(0 0 6px cyan);
+            animation: floatAround 18s infinite linear;
+            pointer-events: none;
+            color: #0ff;
+        }
+        
+        @keyframes floatAround {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.2;
+            }
+            25% {
+                transform: translate(40px, -30px) rotate(10deg);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translate(-20px, 50px) rotate(-5deg);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translate(30px, 20px) rotate(15deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.2;
+            }
+        }
+        
+        .fly-icon:nth-child(1) {
+            top: 15%;
+            left: 5%;
+            animation-duration: 22s;
+            font-size: 2rem;
+        }
+        
+        .fly-icon:nth-child(2) {
+            top: 70%;
+            left: 85%;
+            animation-duration: 18s;
+            font-size: 2.5rem;
+            animation-delay: -2s;
+        }
+        
+        .fly-icon:nth-child(3) {
+            top: 40%;
+            left: 20%;
+            animation-duration: 25s;
+            font-size: 1.8rem;
+            animation-delay: -5s;
+        }
+        
+        .fly-icon:nth-child(4) {
+            top: 80%;
+            left: 10%;
+            animation-duration: 20s;
+            font-size: 2.2rem;
+            animation-delay: -1s;
+        }
+        
+        .fly-icon:nth-child(5) {
+            top: 25%;
+            left: 75%;
+            animation-duration: 30s;
+            font-size: 3rem;
+            animation-delay: -7s;
+        }
+        
+        .fly-icon:nth-child(6) {
+            top: 55%;
+            left: 45%;
+            animation-duration: 27s;
+            font-size: 1.5rem;
+            animation-delay: -3s;
+        }
+        
+        .fly-icon:nth-child(7) {
+            top: 88%;
+            left: 60%;
+            animation-duration: 23s;
+            font-size: 2rem;
+            animation-delay: -4s;
+        }
+        
+        .fly-icon:nth-child(8) {
+            top: 12%;
+            left: 92%;
+            animation-duration: 19s;
+            font-size: 1.9rem;
+            animation-delay: -6s;
+        }
+        /* navbar futuristic */
+        
+        .navbar-future {
+            background: rgba(5, 10, 30, 0.65);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .navbar-brand {
+            font-family: 'Orbitron', monospace;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0ff, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: #ccd6f6 !important;
+            margin: 0 0.7rem;
+            transition: 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #0ff !important;
+            text-shadow: 0 0 8px cyan;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #0ff;
+            transition: 0.3s;
+            box-shadow: 0 0 6px cyan;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: #0ff !important;
+            text-shadow: 0 0 8px cyan;
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .btn-cyber {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1.5px solid #0ff;
+            border-radius: 40px;
+            padding: 12px 32px;
+            color: #0ff;
+            font-weight: 600;
+            transition: 0.3s;
+            backdrop-filter: blur(8px);
+        }
+        
+        .btn-cyber:hover {
+            background: #0ff;
+            color: #0a0a1a;
+            box-shadow: 0 0 20px cyan;
+            transform: translateY(-3px);
+        }
+        /* work header */
+        
+        .work-header {
+            padding-top: 8rem;
+            padding-bottom: 3rem;
+        }
+        
+        .glow-text-small {
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(120deg, #a5f3ff, #c084fc, #ff99cc);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textShine 5s linear infinite;
+        }
+        
+        @keyframes textShine {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 200% 50%;
+            }
+        }
+        /* filter buttons */
+        
+        .filter-btn {
+            background: rgba(20, 25, 55, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 8px 24px;
+            font-weight: 600;
+            color: #ccd6f6;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #0ff;
+            color: #0a0a1a;
+            border-color: #0ff;
+            box-shadow: 0 0 15px cyan;
+            transform: translateY(-2px);
+        }
+        /* glass card for projects */
+        
+        .glass-card {
+            background: rgba(20, 25, 55, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: #0ff;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+        }
+        
+        .card-img {
+            height: 220px;
+            object-fit: cover;
+            transition: 0.6s;
+        }
+        
+        .glass-card:hover .card-img {
+            transform: scale(1.05);
+        }
+        
+        .skill-tag {
+            background: rgba(0, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 4px 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #0ff;
+            display: inline-block;
+            margin: 4px;
+        }
+        
+        .btn-outline-cyan {
+            border: 1.5px solid #0ff;
+            background: transparent;
+            border-radius: 40px;
+            padding: 6px 20px;
+            color: #0ff;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        .btn-outline-cyan:hover {
+            background: #0ff;
+            color: #0a0a1a;
+            box-shadow: 0 0 12px cyan;
+        }
+        /* scroll reveal */
+        
+        .reveal-fade {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal-fade.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+         ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: #050514;
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: #0ff;
+            border-radius: 10px;
+        }
+        
+        footer {
+            background: #020212;
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            margin-top: 3rem;
+        }
+        
+        .text-muted {
+            --bs-text-opacity: 1;
+            color: rgb(249 249 249) !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Flying Icons -->
+    <div class="floating-icons">
+        <div class="fly-icon"><i class="bi bi-brush-fill"></i></div>
+        <div class="fly-icon"><i class="bi bi-palette-fill"></i></div>
+        <div class="fly-icon"><i class="bi bi-pencil-fill"></i></div>
+        <div class="fly-icon"><i class="bi bi-vector-pen"></i></div>
+        <div class="fly-icon"><i class="bi bi-layout-text-window-reverse"></i></div>
+        <div class="fly-icon"><i class="bi bi-window-sidebar"></i></div>
+        <div class="fly-icon"><i class="bi bi-display"></i></div>
+        <div class="fly-icon"><i class="bi bi-stars"></i></div>
+    </div>
+    <div class="cursor-glow"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-future py-3">
+        <div class="container">
+            <a class="navbar-brand fs-2" href="#">✦ Milan Singh<span style="color:#0ff"> UI/UX DESIGNER</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#futureNav" style="background: #0ff22a; border: none;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="futureNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="work.html">Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="btn btn-cyber ms-3 d-none d-lg-block">Hire Me →</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Work Header -->
+    <section class="work-header">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8 reveal-fade">
+                    <span class="badge bg-primary bg-opacity-25 text-info px-3 py-2 rounded-pill mb-3">
+                    <i class="bi bi-grid-3x3-gap-fill me-1"></i> Milan Singh Portfolio
+                </span>
+
+                    <h1 class="display-4 fw-bold" style="font-family: 'Orbitron';">
+                        Selected <span class="glow-text-small">UI/UX Projects</span>
+                    </h1>
+
+                    <p class="lead text-muted mt-3" style="color:#b9c7d9;">
+                        ERP Systems, HRMS Platforms, Mobile Applications, Responsive Websites, and User-Centered Digital Solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-3">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-center gap-3 reveal-fade">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="uiux">UI/UX</button>
+                <button class="filter-btn" data-filter="mobile">Mobile App</button>
+                <button class="filter-btn" data-filter="web">Website</button>
+                <button class="filter-btn" data-filter="erp">ERP Systems</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section id="work" class="py-4 pb-5">
+        <div class="container">
+            <div class="row g-4" id="projectsContainer">
+                <!-- Project 1 - AI -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="erp uiux">
+                    <div class="glass-card reveal-fade">
+                        <img src="https://placehold.co/600x400/0a1030/cyan?text=HRMS+DASHBOARD&font=orbitron" class="card-img" alt="HRMS Dashboard">
+
+                        <div class="p-4">
+                            <h4 class="fw-bold">Human Resource Management System</h4>
+
+                            <p class="text-secondary">
+                                Complete HRMS platform covering employee management, payroll, leave, attendance, and recruitment workflows.
+                            </p>
+
+                            <div>
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">HRMS</span>
+                                <span class="skill-tag">Prototype</span>
+                                <a href="https://www.figma.com/design/zjM1cdRPf5IByeCzqdihrY/AppticodeHRMS?node-id=0-1&t=WNI7e6P7TiP3YCSK-1" class="btn btn-outline-cyan btn-sm mt-3">View Case →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 - Mobile Crypto -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="erp uiux">
+                    <div class="glass-card reveal-fade">
+                        <img src="https://placehold.co/600x400/0a1030/cyan?text=MANUFACTURING+ERP&font=orbitron" class="card-img" alt="Manufacturing ERP">
+
+                        <div class="p-4">
+                            <h4 class="fw-bold">Manufacturing ERP System</h4>
+
+                            <p class="text-secondary">
+                                Designed inventory control, production planning, order fulfillment, and reporting modules.
+                            </p>
+
+                            <div>
+                                <span class="skill-tag">ERP</span>
+                                <span class="skill-tag">Wireframe</span>
+                                <span class="skill-tag">Figma</span>
+                                <a href="https://www.figma.com/design/oWxQ4wZMISbOpyAvq2tPPm/Manufacturing-ERP-Web-Portal?node-id=1241-12&t=O9E9kx4M6kdLQfG8-1" class="btn btn-outline-cyan btn-sm mt-3">View Case →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 - Metaverse Web -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="erp uiux">
+                    <div class="glass-card reveal-fade">
+                        <img src="https://placehold.co/600x400/101c3c/a855f7?text=JEWELLERY+ERP&font=orbitron" class="card-img" alt="Jewellery ERP">
+
+                        <div class="p-4">
+                            <h4 class="fw-bold">Jewellery ERP System</h4>
+
+                            <p class="text-secondary">
+                                Enterprise-grade ERP solution for inventory, sales, CRM, billing, and analytics management.
+                            </p>
+
+                            <div>
+                                <span class="skill-tag">ERP</span>
+                                <span class="skill-tag">CRM</span>
+                                <span class="skill-tag">Dashboard</span>
+                                <a href="https://www.figma.com/design/DWuspN5T8RRjxghyBEDVfI/Jewellery?node-id=0-1&t=QcsCIFrWydzFusga-1" class="btn btn-outline-cyan btn-sm mt-3">View Case →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 4 - Health AI -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="mobile uiux">
+                    <div class="glass-card reveal-fade">
+                        <img src="https://placehold.co/600x400/0f142e/0ff?text=AGROTECH+APP&font=orbitron" class="card-img" alt="Agrotech App">
+
+                        <div class="p-4">
+                            <h4 class="fw-bold">Agrotech Mobile App</h4>
+
+                            <p class="text-secondary">
+                                Agriculture marketplace and farmer services mobile application focused on usability and accessibility.
+                            </p>
+
+                            <div>
+                                <span class="skill-tag">Mobile UI</span>
+                                <span class="skill-tag">UX Research</span>
+                                <span class="skill-tag">Prototype</span>
+                                <a href="https://www.figma.com/design/hKRvbt1ccBksbB3rrm39UF/Agrotech-App-UI-Design?node-id=510-2&t=mOHnZzWTpNgk4sEQ-1" class="btn btn-outline-cyan btn-sm mt-3">View Case →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 5 - Gaming Web -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="uiux">
+                    <div class="glass-card reveal-fade">
+                        <img src="https://placehold.co/600x400/0a1030/cyan?text=TASK+MANAGEMENT&font=orbitron" class="card-img" alt="Task Management System">
+
+                        <div class="p-4">
+                            <h4 class="fw-bold">Task Management System</h4>
+
+                            <p class="text-secondary">
+                                Designed task planning, project tracking, team collaboration, and workflow management interfaces for improved productivity.
+                            </p>
+
+                            <div>
+                                <span class="skill-tag">UI/UX</span>
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">Dashboard</span>
+                                <a href="https://www.figma.com/design/uaG9TVqY7IEnbZjScXtIyL/Task-Management?node-id=0-1&t=5NCuD5srXDhuOBAN-1" class="btn btn-outline-cyan btn-sm mt-3">View Case →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 6 - Ecommerce Web -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="uiux">
+                    <div class="glass-card reveal-fade">
+                        <img src="https://placehold.co/600x400/101c3c/a855f7?text=PROPERTY+MANAGEMENT&font=orbitron" class="card-img" alt="Property Management">
+
+                        <div class="p-4">
+                            <h4 class="fw-bold">Property Management System</h4>
+
+                            <p class="text-secondary">
+                                Built user-centric interfaces for property sales, customer management, lead tracking, bookings, and analytics dashboards.
+                            </p>
+
+                            <div>
+                                <span class="skill-tag">CRM</span>
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">UX Research</span>
+                                <a href="https://www.figma.com/design/5HFnODv6lKSPIfn5hWIFzp/Property-Management-Software?node-id=0-1&t=3FNGFpGR0V1oy1N5-1" class="btn btn-outline-cyan btn-sm mt-3">View Case →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 7 - Smart Home AI -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="web">
+                    <div class="glass-card reveal-fade">
+                        <img src="https://placehold.co/600x400/0c1235/ff55dd?text=BULLCRAFT+ESTATE&font=orbitron" class="card-img" alt="Bullcraft Estate">
+
+                        <div class="p-4">
+                            <h4 class="fw-bold">Bullcraft Estate Website</h4>
+
+                            <p class="text-secondary">
+                                Responsive construction company website developed using HTML, CSS, JavaScript, and Bootstrap.
+                            </p>
+
+                            <div>
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">Bootstrap</span>
+                                <span class="skill-tag">Responsive</span>
+                                <a href="https://www.figma.com/design/5HFnODv6lKSPIfn5hWIFzp/Property-Management-Software?node-id=0-1&t=3FNGFpGR0V1oy1N5-1" class="btn btn-outline-cyan btn-sm mt-3">View Case →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 8 - Mobile Fitness -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="web">
+                    <div class="glass-card reveal-fade">
+                        <img src="https://placehold.co/600x400/0c1235/ff55dd?text=SIGNATURE+CONSTRUCTION&font=orbitron" class="card-img" alt="Signature Construction">
+
+                        <div class="p-4">
+                            <h4 class="fw-bold">Signature Construction Website</h4>
+
+                            <p class="text-secondary">
+                                Responsive construction company website designed with modern layouts, optimized performance, SEO best practices, and seamless cross-device experience.
+                            </p>
+
+                            <div>
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">Bootstrap</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <a href="https://www.figma.com/design/5HFnODv6lKSPIfn5hWIFzp/Property-Management-Software?node-id=0-1&t=3FNGFpGR0V1oy1N5-1" class="btn btn-outline-cyan btn-sm mt-3">View Case →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 9 - Web3 Platform -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="web">
+                    <div class="glass-card reveal-fade">
+                        <img src="https://placehold.co/600x400/081225/00ffff?text=SEARCH+ENGINE+APP&font=orbitron" class="card-img" alt="Search Engine App">
+
+                        <div class="p-4">
+                            <h4 class="fw-bold">Search Engine Web Application</h4>
+
+                            <p class="text-secondary">
+                                Laravel-based search platform with keyword search functionality and scalable architecture.
+                            </p>
+
+                            <div>
+                                <span class="skill-tag">Laravel</span>
+                                <span class="skill-tag">PHP</span>
+                                <span class="skill-tag">MySQL</span>
+                                <a href="https://www.figma.com/design/5HFnODv6lKSPIfn5hWIFzp/Property-Management-Software?node-id=0-1&t=3FNGFpGR0V1oy1N5-1" class="btn btn-outline-cyan btn-sm mt-3">View Case →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Project Highlight -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 reveal-fade">
+                    <span class="badge bg-info bg-opacity-25 text-info px-3 py-2 rounded-pill">🏆 Featured Case Study</span>
+                    <h2 class="display-6 fw-bold mt-3" style="font-family:'Orbitron';">
+                        Human Resource Management System
+                    </h2>
+                    <p class="lead" style="color:#b9c7d9;">Designed a complete HRMS platform covering employee management, payroll, attendance, leave management, and recruitment workflows. Built scalable design systems and high-fidelity prototypes for seamless developer handoff.</p>
+                    <!-- <div class="d-flex gap-4 mt-4">
+                        <div><i class="bi bi-calendar-check fs-2 text-info"></i><br><strong>6 weeks</strong><br><span class="text-muted">Timeline</span></div>
+                        <div><i class="bi bi-people fs-2 text-info"></i><br><strong>5 designers</strong><br><span class="text-muted">Team</span></div>
+                        <div><i class="bi bi-trophy fs-2 text-info"></i><br><strong>UX Award 2024</strong><br><span class="text-muted">Winner</span></div>
+                    </div> -->
+                    <!-- <a href="#" class="btn btn-cyber mt-4">Read Full Story →</a> -->
+                </div>
+                <div class="col-lg-6 text-center reveal-fade">
+                    <img src="https://placehold.co/600x400/0a1030/cyan?text=HRMS+DASHBOARD&font=orbitron" class="img-fluid rounded-4 shadow-lg" style="border: 1px solid rgba(0,255,255,0.3);" alt="featured">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center text-center reveal-fade">
+                <div class="col-lg-8">
+                    <h3 class="fw-bold" style="font-family:'Orbitron';">Ready to build the <span class="glow-text-small">future?</span></h3>
+                    <p class="text-muted mb-4">Let's collaborate on your next groundbreaking digital product.</p>
+                    <a href="#contact" class="btn btn-purple-glow px-5 py-3"><i class="bi bi-send-fill me-2"></i>Start a Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pt-5 pb-4">
+        <div class="container text-center text-muted">
+            <p>
+                © 2026 Milan Singh | UI/UX Designer Portfolio
+            </p>
+
+            <div class="small">
+                Crafted with Figma, Creativity & User-Centered Design ✦
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mouse glow effect
+        const cursor = document.querySelector('.cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 15 + 'px';
+            cursor.style.top = e.clientY - 15 + 'px';
+        });
+
+        // Scroll reveal
+        const faders = document.querySelectorAll('.reveal-fade');
+        const appearOptions = {
+            threshold: 0.2,
+            rootMargin: "0px 0px -30px 0px"
+        };
+        const appearOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        faders.forEach(f => appearOnScroll.observe(f));
+
+        // Smooth anchor scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectItems = document.querySelectorAll('.project-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // update active state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectItems.forEach(item => {
+                    const categories = item.getAttribute('data-category').split(' ');
+                    if (filterValue === 'all' || categories.includes(filterValue)) {
+                        item.style.display = 'block';
+                        // re-trigger animation
+                        const card = item.querySelector('.glass-card');
+                        card.classList.remove('active');
+                        setTimeout(() => card.classList.add('active'), 10);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Anime.js floating icons extra drift
+        anime({
+            targets: '.fly-icon',
+            translateX: () => anime.random(-25, 25),
+            translateY: () => anime.random(-30, 30),
+            duration: 3000,
+            direction: 'alternate',
+            loop: true,
+            easing: 'easeInOutQuad'
+        });
+
+        // Glass card hover animation with anime
+        const cards = document.querySelectorAll('.glass-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                anime({
+                    targets: card,
+                    scale: 1.02,
+                    duration: 300,
+                    easing: 'easeOutQuad'
+                });
+            });
+            card.addEventListener('mouseleave', () => {
+                anime({
+                    targets: card,
+                    scale: 1,
+                    duration: 300
+                });
+            });
+        });
+
+        // Dynamic navbar background
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar-future');
+            if (window.scrollY > 60) {
+                nav.style.background = "rgba(2, 4, 20, 0.9)";
+                nav.style.backdropFilter = "blur(20px)";
+            } else {
+                nav.style.background = "rgba(5, 10, 30, 0.65)";
+            }
+        });
+    </script>
+</body>
+
+</html>cript>
+</body>
+
+</html>
